@@ -1,30 +1,33 @@
 <template>
   <div>
-    <div>I am a webpage.</div>
-    <button @click="addOne">Increment</button>
-    <button @click="lameo">Become lame</button>
-    <div>{{ message }}</div>
+    <div>Trump supporters aren't {{ content['arent'] }}{{ content['noun'] ? 's' : '' }}</div>
+    <button @click="handleClick">Aren't what?</button>
+    <div v-if="content['arent']">... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.</div>
   </div>
 </template>
 
 <script>
-  import { mapMutations } from 'vuex';
+  // import { mapMutations } from 'vuex';
 
   export default {
     data() {
         return {
-        message: 'nope',
+        content: {
+          'arent': '',
+          noun: false,
+        },
+        clicks: 0,
       };
     },
     methods: {
-      addOne() {
-        this.message = 'mathing!';
-        console.log('adding!');
+      getContent() {
+        this.$store.dispatch('getNextTruth');
+        this.content = this.$store.state.displayContent;
       },
-      lameo() {
-        this.message = 'laaaame';
-        console.log('super lame');
-      },
+      handleClick() {
+        this.getContent();
+        this.clicks++;
+      }
     }
   }
 </script>

@@ -1,0 +1,20 @@
+:root {
+  --blue: #213875;
+  --red: #da1333;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-rendering: optimizeLegibility;
+  color: var(--blue);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}

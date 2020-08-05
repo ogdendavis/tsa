@@ -4,9 +4,10 @@
 }
 
 body {
+  background: var(--blue);
+  color: #fff;
   font-family: 'Montserrat', sans-serif;
   text-rendering: optimizeLegibility;
-  color: var(--blue);
 }
 
 h1, h2, h3, h4, h5, h6 {

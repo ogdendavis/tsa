@@ -1,20 +1,20 @@
 <template>
-  <div>
-    <div>
-      <h1>Trump supporters aren't</h1>
-      <span class="arent">
-        {{ content['arent'] }}{{ content['noun'] ? 's' : '' }}
-      </span>
-    </div>
+  <div class="container">
+    <Banner :arent="content['arent']" :noun="content['noun']" />
     <button @click="handleClick">Aren't what?</button>
-    <div v-if="content['arent']">... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.</div>
+    <div v-if="content['arent']">
+      ... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.
+    </div>
   </div>
 </template>
 
 <script>
-  // import { mapMutations } from 'vuex';
+  import Banner from '~/components/Banner.vue';
 
   export default {
+    components: {
+      Banner,
+    },
     data() {
         return {
         content: {
@@ -38,16 +38,7 @@
 </script>
 
 <style scoped>
-  h1, .arent {
-    display: inline-block;
-    font-weight: 700;
-    font-size: 3rem;
-    margin: 0;
-  }
-  h1 {
-    margin-right: 0.67rem;
-  }
-  .arent {
-    color: var(--red);
+  .container {
+    margin: 1rem;
   }
 </style>

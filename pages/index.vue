@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <Banner :arent="content['arent']" :noun="content['noun']" />
-    <button @click="handleClick">Aren't what?</button>
+  <div class="container" v-on:wheel.once="handleScroll">
+    <Banner :class="bannerClass" :arent="forBanner['arent']" :noun="forBanner['noun']" />
     <div v-if="content['arent']">
-      ... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.
+      <button @click="handleClick">Aren't what?</button>
+      <p>
+        ... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.
+      </p>
     </div>
   </div>
 </template>
@@ -16,29 +18,57 @@
       Banner,
     },
     data() {
-        return {
+      return {
+        bannerClass: 'banner banner--init',
         content: {
-          'arent': '',
+          arent: '',
           noun: false,
         },
-        clicks: 0,
+        forBanner: {
+          arent: '',
+          noun: false,
+        }
       };
     },
     methods: {
+      handleClick(e) {
+        this.getContent();
+      },
+      handleScroll(e) {
+        this.startAnimation();
+        this.getContent();
+      },
       getContent() {
         this.$store.dispatch('getNextTruth');
         this.content = this.$store.state.displayContent;
       },
-      handleClick() {
-        this.getContent();
-        this.clicks++;
-      }
-    }
+      startAnimation() {
+        console.log('pretty!');
+        this.bannerClass = 'banner';
+        setTimeout(() => {
+          this.forBanner = {
+            arent: this.content.arent,
+            noun: this.content.noun,
+          }
+        }, 500);
+      },
+    },
   }
 </script>
 
 <style scoped>
   .container {
-    margin: 1rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .banner {
+    transition: all .5s ease;
+    transform: translateY(0);
+  }
+  .banner--init {
+    transform: translateY(calc(50vh - 3rem));
   }
 </style>

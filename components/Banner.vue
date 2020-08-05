@@ -13,12 +13,15 @@
       arent: String,
       noun: Boolean,
     },
+    updated() {
+      console.log('components/Banner.vue updated()');
+    },
   }
 </script>
 
 <style scoped>
   div {
-
+    text-align: center;
   }
   h1, span {
     display: inline-block;
@@ -30,7 +33,6 @@
     margin-right: 0.67rem;
   }
   span {
-    color: var(--red);
     position: relative;
   }
   span::after {

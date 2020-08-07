@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Scroll for more</h1>
+    <h1>Trump supporters aren't&nbsp;</h1>
     <span>
       {{ arent }}{{ noun ? 's' : '' }}
     </span>
@@ -28,9 +28,6 @@
     font-weight: 700;
     font-size: 3rem;
     margin: 0;
-  }
-  h1 {
-    margin-right: 0.67rem;
   }
   span {
     position: relative;

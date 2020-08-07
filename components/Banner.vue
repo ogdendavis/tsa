@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Trump supporters aren't</h1>
+    <h1>Scroll for more</h1>
     <span>
       {{ arent }}{{ noun ? 's' : '' }}
     </span>

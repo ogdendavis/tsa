@@ -94,11 +94,15 @@
     60% {transform: translateY(-15px);}
   }
 
-  main {
-    margin-top: 2rem;
-  }
-
-  h2 {
-    text-align: center;
+  button {
+    background: #fff;
+    color: var(--red);
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
   }
 </style>

@@ -83,7 +83,7 @@
     opacity: 0;
   }
   .banner--init {
-    transform: translateY(calc(50vh - 3rem));
+    transform: translateY(calc(50vh - 4rem));
   }
   .banner--withArrow::after {
     opacity: 1;

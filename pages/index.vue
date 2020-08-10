@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-on:wheel.once="handleScroll">
-    <Banner :class="bannerClass" :arent="forBanner['arent']" :noun="forBanner['noun']" />
-    <div v-if="content['arent']">
+    <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
+    <div v-if="displayFull">
       <button @click="handleClick">Aren't what?</button>
       <p>
         ... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.
@@ -19,15 +19,13 @@
     },
     data() {
       return {
-        bannerClass: 'banner banner--init',
+        bannerClass: 'banner banner--init banner--withArrow',
         content: {
           arent: '',
           noun: false,
         },
-        forBanner: {
-          arent: '',
-          noun: false,
-        }
+        bannerInit: false,
+        displayFull: false,
       };
     },
     methods: {
@@ -43,22 +41,23 @@
         this.content = this.$store.state.displayContent;
       },
       startAnimation() {
+        // Arrow immediately fades out, and we initialize the banner
+        this.bannerClass = 'banner banner--init';
+        this.bannerInit = true;
         // Trigger animation by removing banner--init class
-        this.bannerClass = 'banner';
-        // Slight delay in sending info to banner, so content updates after animation
         setTimeout(() => {
-          this.forBanner = {
-            arent: this.content.arent,
-            noun: this.content.noun,
-          }
+          this.bannerClass = 'banner';
         }, 600);
+        // Once the banner has arrived at the top, display the rest of the content
+        setTimeout(() => {
+          this.displayFull = true;
+        }, 1200);
         // The downCaret is now bouncing invisibly. Remove it!
         setTimeout(() => {
           this.bannerClass = 'banner banner--done';
-        }, 600);
-
+        }, 1200);
       },
-    },
+    }
   }
 </script>
 
@@ -86,7 +85,7 @@
   .banner--init {
     transform: translateY(calc(50vh - 3rem));
   }
-  .banner--init::after {
+  .banner--withArrow::after {
     opacity: 1;
   }
   .banner--done::after {

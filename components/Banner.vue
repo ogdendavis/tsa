@@ -1,9 +1,7 @@
 <template>
   <div>
-    <h1>Trump supporters aren't&nbsp;</h1>
-    <span>
-      {{ arent }}{{ noun ? 's' : '' }}
-    </span>
+    <h1>Trump supporters aren't&nbsp;<span :class="init ? 'loaded' : ''">{{ arent }}{{ noun ? 's' : '' }}</span></h1>
+
   </div>
 </template>
 
@@ -12,9 +10,7 @@
     props: {
       arent: String,
       noun: Boolean,
-    },
-    updated() {
-      console.log('components/Banner.vue updated()');
+      init: Boolean,
     },
   }
 </script>
@@ -24,13 +20,21 @@
     text-align: center;
   }
   h1, span {
-    display: inline-block;
     font-weight: 700;
     font-size: 3rem;
     margin: 0;
   }
   span {
+    display: inline-block;
     position: relative;
+    max-width: 0;
+    transition: all 2s ease;
+    overflow: clip;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+  span.loaded {
+    max-width: calc(100vw);
   }
   span::after {
     content: '';

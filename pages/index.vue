@@ -1,21 +1,19 @@
 <template>
   <div class="container" v-on:wheel.once="handleScroll">
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
-    <div v-if="displayFull">
-      <button @click="handleClick">Aren't what?</button>
-      <p>
-        ... but they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.
-      </p>
-    </div>
+    <Main :visible="displayMain" :content="content" />
+    <button v-if="displayMain" @click="handleClick">Do it again!</button>
   </div>
 </template>
 
 <script>
   import Banner from '~/components/Banner.vue';
+  import Main from '~/components/Main.vue';
 
   export default {
     components: {
       Banner,
+      Main,
     },
     data() {
       return {
@@ -25,7 +23,7 @@
           noun: false,
         },
         bannerInit: false,
-        displayFull: false,
+        displayMain: false,
       };
     },
     methods: {
@@ -47,15 +45,12 @@
         // Trigger animation by removing banner--init class
         setTimeout(() => {
           this.bannerClass = 'banner';
-        }, 600);
-        // Once the banner has arrived at the top, display the rest of the content
+        }, 1000);
+        // Once the banner has arrived at the top, display the rest of the content and remove the (now invisible) bouncy arrow
         setTimeout(() => {
-          this.displayFull = true;
-        }, 1200);
-        // The downCaret is now bouncing invisibly. Remove it!
-        setTimeout(() => {
+          this.displayMain = true;
           this.bannerClass = 'banner banner--done';
-        }, 1200);
+        }, 1600);
       },
     }
   }
@@ -93,11 +88,17 @@
     display: none;
     visibility: hidden;
   }
-
-
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
     40% {transform: translateY(-30px);}
     60% {transform: translateY(-15px);}
+  }
+
+  main {
+    margin-top: 2rem;
+  }
+
+  h2 {
+    text-align: center;
   }
 </style>

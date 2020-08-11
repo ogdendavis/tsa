@@ -1,8 +1,9 @@
 <template>
-  <div class="container" v-on:wheel.once="handleScroll">
+  <div class="container">
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
     <Main :visible="displayMain" :content="content" />
     <button v-if="displayMain" @click="handleClick">Do it again!</button>
+    <div class="startListener" tabindex="0" @wheel.once="handleScroll" @keyup.once="handleKeyup" @touchmove.once="handleTouch" @click.once="handleInitialClick" v-focus />
   </div>
 </template>
 
@@ -27,13 +28,36 @@
         displayMain: false,
       };
     },
+    directives: {
+      focus: {
+        inserted: function(el) {
+          el.focus();
+        },
+      },
+    },
     methods: {
       handleClick(e) {
         this.getContent();
       },
-      handleScroll(e) {
+      handleScroll() {
+        // This and following "handle" functions exist because Vue doesn't want you to attach multiple listeners to an element with the same callback.
+        this.start();
+      },
+      handleInitialClick() {
+        this.start();
+      },
+      handleKeyup() {
+        this.start();
+      },
+      handleTouch() {
+        this.start();
+      },
+      start() {
+        // called by all listeners on startListener
         this.startAnimation();
         this.getContent();
+        // remove startListener -- thereby also removing its listeners
+        document.querySelector('.startListener').remove();
       },
       getContent() {
         this.$store.dispatch('getNextTruth');
@@ -43,6 +67,8 @@
         // Arrow immediately fades out, and we initialize the banner
         this.bannerClass = 'banner banner--init';
         this.bannerInit = true;
+        // Let the page container go back to auto sizing
+        this.containerClass = 'container';
         // Trigger animation by removing banner--init class
         setTimeout(() => {
           this.bannerClass = 'banner';
@@ -104,5 +130,13 @@
     font-weight: 700;
     cursor: pointer;
     border: 1px solid var(--red);
+  }
+
+  .startListener {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 </style>

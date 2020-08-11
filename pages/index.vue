@@ -105,5 +105,6 @@
     border: none;
     font-weight: 700;
     cursor: pointer;
+    border: 1px solid var(--red);
   }
 </style>

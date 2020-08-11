@@ -2,18 +2,21 @@
   <main :class="mainClass">
     <h2>But they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.</h2>
     <section>
-      <ul>
-        <li v-for="item in content.cards" :key="item.link">{{ item.title }}</li>
-      </ul>
+      <Card v-for="card in content.cards" :key="card.link" :item="card" />
     </section>
   </main>
 </template>
 
 <script>
+  import Card from '~/components/Card.vue';
+
   export default {
     props: {
       visible: Boolean,
       content: Object,
+    },
+    components: {
+      Card,
     },
     data() {
       return {
@@ -61,5 +64,19 @@
 
   h2 {
     margin-top: 0;
+    text-align: center;
+    color: var(--red);
+    font-size: 4rem;
+  }
+  @media only screen and (max-width: 600px) {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
   }
 </style>

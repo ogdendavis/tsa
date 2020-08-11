@@ -2,6 +2,7 @@
   <div class="container">
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
     <Main :visible="displayMain" :content="content" />
+    <Footer v-if="displayMain" />
     <button v-if="displayMain" @click="handleClick">Do it again!</button>
     <div class="startListener" tabindex="0" @wheel.once="handleScroll" @keyup.once="handleKeyup" @touchmove.once="handleTouch" @click.once="handleInitialClick" v-focus />
   </div>
@@ -10,11 +11,13 @@
 <script>
   import Banner from '~/components/Banner.vue';
   import Main from '~/components/Main.vue';
+  import Footer from '~/components/Footer.vue';
 
   export default {
     components: {
       Banner,
       Main,
+      Footer,
     },
     data() {
       return {
@@ -121,7 +124,7 @@
 
   button {
     background: #fff;
-    color: var(--red);
+    color: var(--blue);
     position: fixed;
     bottom: 1rem;
     right: 1rem;
@@ -129,7 +132,12 @@
     border: none;
     font-weight: 700;
     cursor: pointer;
-    border: 1px solid var(--red);
+    border: 0.25rem solid var(--blue);
+    transition: all 0.25s ease;
+  }
+  button:hover {
+    color: var(--red);
+    border: 0.25rem solid var(--red);
   }
 
   .startListener {

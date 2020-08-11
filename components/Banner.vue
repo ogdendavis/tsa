@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Trump supporters aren't <span :class="init ? 'loaded' : ''">{{ arent }}{{ noun ? 's' : '' }}</span></h1>
-
   </div>
 </template>
 

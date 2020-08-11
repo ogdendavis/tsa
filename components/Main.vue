@@ -43,7 +43,6 @@
     color: var(--blue);
     padding: 2rem;
     box-sizing: border-box;
-    min-height: 33vh;
     transition: all 1s ease;
     max-width: 80rem;
     margin: 2rem auto;

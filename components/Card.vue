@@ -23,21 +23,27 @@
     max-width: 30%;
     min-width: 15rem;
     position: relative;
+    box-shadow: 2px 3px 10px 5px #dcdcdc;
+    margin-bottom: 2rem;
   }
-  article::after {
-    content: '';
-    display: block;
-    height: 2px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--red);
+  @media only screen and (max-width: 900px) {
+    article {
+      max-width: 45%;
+    }
+  }
+  @media only screen and (max-width: 630px) {
+    article {
+      max-width: none;
+    }
   }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  h3, p {
+    padding: 0 0.75rem;
   }
 
   div {

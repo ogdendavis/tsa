@@ -38,7 +38,7 @@ export const state = () => ({
           link: `https://fortune.com/2016/06/07/donald-trump-racism-quotes/`,
           title: `Is Donald Trump Racist? Here’s What the Record Shows`,
           image: `https://content.fortune.com/wp-content/uploads/2016/04/roycohn.jpg`,
-          blurb: `again and again, Trump has provoked anxiety and played to racial divisions`,
+          blurb: `Again and again, Trump has provoked anxiety and played to racial divisions`,
         },
         {
           link: `https://www.usatoday.com/story/entertainment/books/2019/07/08/trump-racial-slur-rumors-resurface-new-book-method-madness/1677839001/`,

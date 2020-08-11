@@ -61,8 +61,6 @@
   .container {
     box-sizing: border-box;
     padding: 1rem;
-    width: 100vw;
-    height: 100vh;
   }
 
   .banner {

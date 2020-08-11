@@ -21,6 +21,7 @@
         content: {
           arent: '',
           noun: false,
+          cards: [],
         },
         bannerInit: false,
         displayMain: false,

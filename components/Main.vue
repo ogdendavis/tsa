@@ -2,7 +2,9 @@
   <main :class="mainClass">
     <h2>But they decided that being {{ content.noun ? 'a ' : ''}}{{ content['arent'] }} isn't a deal breaker.</h2>
     <section>
-      Here is some dummy content!
+      <ul>
+        <li v-for="item in content.cards" :key="item.link">{{ item.title }}</li>
+      </ul>
     </section>
   </main>
 </template>
@@ -40,6 +42,8 @@
     box-sizing: border-box;
     min-height: 33vh;
     transition: all 1s ease;
+    max-width: 80rem;
+    margin: 2rem auto;
   }
   main.hidden {
     display: none;

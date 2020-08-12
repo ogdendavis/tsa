@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <h1>Trump supporters aren't <span :class="init ? 'loaded' : ''">{{ arent }}{{ noun ? 's' : '' }}</span></h1>
-  </div>
+  <header>
+    <h1><div>Trump</div> <div>supporters</div> <div>aren't</div> <span :class="init ? 'loaded' : ''">{{ arent }}{{ noun ? 's' : '' }}</span></h1>
+  </header>
 </template>
 
 <script>
@@ -15,9 +15,19 @@
 </script>
 
 <style scoped>
-  div {
+  header {
     text-align: center;
   }
+
+  div {
+    display: inline;
+  }
+  @media only screen and (max-width: 650px) {
+    div {
+      display: block;
+    }
+  }
+
   h1, span {
     display: inline-block;
     position: relative;
@@ -45,5 +55,10 @@
     right: 0;
     height: 0.5rem;
     background: var(--red);
+  }
+  @media only screen and (max-width: 650px) {
+    span {
+      bottom: 0;
+    }
   }
 </style>

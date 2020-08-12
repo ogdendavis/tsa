@@ -40,7 +40,17 @@
     },
     methods: {
       handleClick(e) {
-        this.getContent();
+        // Fade out current content
+        document.querySelector('.container').style.opacity = 0;
+        // Get new content and move back to top while faded out
+        setTimeout(() => {
+          this.getContent();
+          window.scrollTo(0,0);
+        }, 510);
+        // Fade back in!
+        setTimeout(() => {
+          document.querySelector('.container').style.opacity = 1;
+        }, 750);
       },
       handleScroll() {
         // This and following "handle" functions exist because Vue doesn't want you to attach multiple listeners to an element with the same callback.
@@ -90,6 +100,7 @@
   .container {
     box-sizing: border-box;
     padding: 1rem;
+    transition: opacity .5s ease;
   }
 
   .banner {

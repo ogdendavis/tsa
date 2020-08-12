@@ -32,6 +32,9 @@
             this.mainClass = 'visible fadeIn';
           }, 10);
         }
+        else if (newVisible === false && newVisible !== oldVisible) {
+          this.mainClass === 'hidden';
+        }
       }
     }
   }

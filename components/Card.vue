@@ -55,4 +55,10 @@
     height: 100%;
     object-fit: cover;
   }
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
 </style>

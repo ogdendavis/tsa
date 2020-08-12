@@ -3,7 +3,6 @@
     <a href="https://www.aauw.org/resources/policy/get-involved-in-elections/" target="_blank" rel="noopener noreferrer"><span>Want Trump out?</span> <span>Do something.</span></a>
     <div>
       <p>This page is not affiliated with any of the media outlets or organizations linked therein.</p>
-      <p>If you have suggestions for articles or want to get in touch, email contact@trumpsupportersarent.com</p>
     </div>
   </footer>
 </template>

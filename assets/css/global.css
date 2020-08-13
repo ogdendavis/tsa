@@ -13,3 +13,19 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
+
+.button {
+  background: #fff;
+  color: var(--blue);
+  padding: 1rem;
+  border: none;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0.25rem solid var(--blue);
+  transition: all 0.25s ease;
+}
+.button:hover {
+  color: var(--red);
+  border: 0.25rem solid var(--red);
+}

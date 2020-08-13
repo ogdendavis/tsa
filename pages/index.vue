@@ -3,7 +3,7 @@
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
     <Main :visible="displayMain" :content="content" />
     <Footer v-if="displayMain" />
-    <button v-if="displayMain" @click="handleClick">Do it again!</button>
+    <button class="button" v-if="displayMain" @click="handleClick">Do it again!</button>
     <div class="startListener" tabindex="0" @wheel.once="handleScroll" @keyup.once="handleKeyup" @touchmove.once="handleTouch" @click.once="handleInitialClick" v-focus />
   </div>
 </template>
@@ -134,21 +134,9 @@
   }
 
   button {
-    background: #fff;
-    color: var(--blue);
     position: fixed;
     bottom: 1rem;
     right: 1rem;
-    padding: 1rem;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
-    border: 0.25rem solid var(--blue);
-    transition: all 0.25s ease;
-  }
-  button:hover {
-    color: var(--red);
-    border: 0.25rem solid var(--red);
   }
 
   .startListener {

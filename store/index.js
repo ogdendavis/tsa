@@ -185,6 +185,12 @@ export const state = () => ({
       noun: true,
       cards: [
         {
+          link: `https://www.msn.com/en-us/news/world/trump-admits-he-is-undermining-usps-to-make-it-harder-to-vote-by-mail/ar-BB17VvwD`,
+          title: `Trump admits he is undermining USPS to make it harder to vote by mail`,
+          image: `https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB17VAfR.img?h=960&w=1598&m=6&q=60&o=f&l=f&x=484&y=159`,
+          blurb: `Trump’s comments lend evidence for critics who say the president is deliberately trying to hamstring the USPS in advance of the November elections to help his re-election bid`,
+        },
+        {
           link: `https://www.usatoday.com/story/opinion/todaysdebate/2020/07/28/trump-using-federal-agents-portland-political-stage-props-editorials-debates/5497383002/`,
           title: `Donald Trump using federal agents as political stage props is anything but 'law and order'`,
           image: `https://www.gannett-cdn.com/presto/2020/07/28/USAT/bf560801-ffe3-4820-979c-8b85b2ca5320-XXX_XXX_TH__portland_protests_2020_535.JPG?width=1320&height=836&fit=crop&format=pjpg&auto=webp`,

@@ -31,17 +31,13 @@
   h1, span {
     display: inline-block;
     position: relative;
-    font-weight: 700;
-    font-size: 3rem;
-    line-height: 3rem;
-    margin: 0;
-    padding-bottom: 0.5rem;
     overflow: hidden;
   }
   span {
     max-width: 0;
     transition: all 2s ease;
     bottom: -1rem;
+    padding-bottom: 0.5rem; /* to match h1 */
   }
   span.loaded {
     max-width: calc(100vw);

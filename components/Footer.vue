@@ -3,7 +3,7 @@
     <a class="button" href="https://www.aauw.org/resources/policy/get-involved-in-elections/" target="_blank" rel="noopener noreferrer"><span>Want Trump out?</span> <span>Do something.</span></a>
     <div class="veryBottom">
       <p>This page is not affiliated with any of the media outlets or organizations linked therein.</p>
-      <p><a href="/contact">Contact</a></p>
+      <p><nuxt-link class="internalNav" to="/contact">Contact</nuxt-link></p>
     </div>
   </footer>
 </template>
@@ -41,7 +41,7 @@
     margin: 0.25rem 0 1rem;
   }
 
-  a:not(.button) {
+  .internalNav {
     color: red;
     font-weight: 700;
   }

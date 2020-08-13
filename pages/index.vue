@@ -98,8 +98,6 @@
 
 <style scoped>
   .container {
-    box-sizing: border-box;
-    padding: 1rem;
     transition: opacity .5s ease;
   }
 

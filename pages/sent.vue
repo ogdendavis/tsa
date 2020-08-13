@@ -4,7 +4,7 @@
     <div class="inner">
       <p class="emphasis">Thanks for your message!</p>
       <p>You'll be redirected back to trumpsupportersarent.com in a few seconds. If you're the impatient type...</p>
-      <nuxt-link to="/" class="button go-home">Go there now!</nuxt-link>
+      <nuxt-link to="/?i=1" class="button go-home">Go there now!</nuxt-link>
     </div>
     <Footer w="60rem"/>
   </div>
@@ -18,8 +18,9 @@
       Footer,
     },
     mounted() {
+      document.querySelector('.container').style.opacity = 1;
       setTimeout(() => {
-        this.$router.push( {path:'/'} );
+        this.$router.push( {path:'/', query: {i: 1}} );
       }, 10000);
     }
   }
@@ -28,6 +29,8 @@
 <style scoped>
   .container {
     text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease;
   }
 
   .inner {

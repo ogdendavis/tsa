@@ -17,6 +17,7 @@
 <style scoped>
   header {
     text-align: center;
+    transition: opacity 10s ease;
   }
 
   div {

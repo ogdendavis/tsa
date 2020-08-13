@@ -31,6 +31,12 @@
         displayMain: false,
       };
     },
+    mounted() {
+      // If coming from internal nav, immediately load content
+      if (this.$route.query.i) {
+        this.start();
+      }
+    },
     directives: {
       focus: {
         inserted: function(el) {
@@ -38,17 +44,12 @@
         },
       },
     },
-    transition: {
-      beforeEnter() {
-        console.log('beforeEnter');
-        console.log(this.$router);
-        this.displayMain = true;
-      },
-    },
     methods: {
       handleClick(e) {
+        const container = document.querySelector('.container');
         // Fade out current content
-        document.querySelector('.container').style.opacity = 0;
+        container.style.transition = 'opacity .5s ease';
+        container.style.opacity = 0;
         // Get new content and move back to top while faded out
         setTimeout(() => {
           this.getContent();
@@ -58,6 +59,9 @@
         setTimeout(() => {
           document.querySelector('.container').style.opacity = 1;
         }, 750);
+        setTimeout(() => {
+          document.querySelector('.container').style.transition = '';
+        }, 1250)
       },
       handleScroll() {
         // This and following "handle" functions exist because Vue doesn't want you to attach multiple listeners to an element with the same callback.
@@ -104,10 +108,6 @@
 </script>
 
 <style scoped>
-  .container {
-    transition: opacity .5s ease;
-  }
-
   .banner {
     transition: all .5s ease;
     transform: translateY(0);

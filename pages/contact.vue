@@ -15,7 +15,7 @@
       <textarea name="message" placeholder="Message"/>
       <button class="button" type="submit">Send</button>
     </form>
-    <nuxt-link to="/" class="button">&lt; Back</nuxt-link>
+    <nuxt-link to="/?i=1" class="button">&lt; Back</nuxt-link>
   </div>
 </template>
 

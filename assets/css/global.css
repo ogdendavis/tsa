@@ -53,6 +53,6 @@ h1 {
   opacity: 0;
 }
 .page-leave-to {
-  transform: translateX(-150vw);
+  transform: translateX(150vw);
   opacity: 0;
 }

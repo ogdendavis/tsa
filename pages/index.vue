@@ -38,6 +38,13 @@
         },
       },
     },
+    transition: {
+      beforeEnter() {
+        console.log('beforeEnter');
+        console.log(this.$router);
+        this.displayMain = true;
+      },
+    },
     methods: {
       handleClick(e) {
         // Fade out current content

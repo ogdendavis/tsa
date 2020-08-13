@@ -225,7 +225,7 @@ export const mutations = {
       const j = Math.floor(Math.random() * (i + 1));
       [truths[i], truths[j]] = [truths[j], truths[i]];
     }
-  }
+  },
 }
 
 export const actions = {
@@ -239,5 +239,5 @@ export const actions = {
     }
     // Set the display content per the new index in state
     context.commit('setTruth');
-  }
+  },
 }

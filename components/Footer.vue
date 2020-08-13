@@ -1,8 +1,9 @@
 <template>
   <footer>
     <a class="button" href="https://www.aauw.org/resources/policy/get-involved-in-elections/" target="_blank" rel="noopener noreferrer"><span>Want Trump out?</span> <span>Do something.</span></a>
-    <div>
+    <div class="veryBottom">
       <p>This page is not affiliated with any of the media outlets or organizations linked therein.</p>
+      <p><a href="/contact">Contact</a></p>
     </div>
   </footer>
 </template>
@@ -37,6 +38,11 @@
   p {
     font-size: 0.75rem;
     text-align: left;
-    margin: 0.25rem 0;
+    margin: 0.25rem 0 1rem;
+  }
+
+  a:not(.button) {
+    color: red;
+    font-weight: 700;
   }
 </style>

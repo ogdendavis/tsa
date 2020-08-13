@@ -2,7 +2,7 @@
   <div class="container">
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
     <Main :visible="displayMain" :content="content" />
-    <Footer v-if="displayMain" />
+    <Footer v-if="displayMain" w="80rem" />
     <button class="button" v-if="displayMain" @click="handleClick">Do it again!</button>
     <div class="startListener" tabindex="0" @wheel.once="handleScroll" @keyup.once="handleKeyup" @touchmove.once="handleTouch" @click.once="handleInitialClick" v-focus />
   </div>

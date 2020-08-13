@@ -1,7 +1,7 @@
 <template>
   <footer>
     <a class="button" href="https://www.aauw.org/resources/policy/get-involved-in-elections/" target="_blank" rel="noopener noreferrer"><span>Want Trump out?</span> <span>Do something.</span></a>
-    <div class="veryBottom">
+    <div :style="footStyle">
       <p>This page is not affiliated with any of the media outlets or organizations linked therein.</p>
       <p><nuxt-link class="internalNav" to="/contact">Contact</nuxt-link></p>
     </div>
@@ -9,7 +9,16 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: {
+      w: String,
+    },
+    computed: {
+      footStyle() {
+        return 'max-width:' + (this.w ? this.w : 'none') + ';';
+      }
+    }
+  }
 </script>
 
 <style scoped>
@@ -25,8 +34,7 @@
   }
 
   div {
-    width: 60vw;
-    min-width: 340px;
+    max-width: 60rem;
     margin: 2rem auto 1rem;
   }
   @media only screen and (max-width: 820px) {

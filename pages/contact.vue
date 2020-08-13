@@ -5,6 +5,7 @@
       name="contact"
       method="POST"
       data-netlify="true"
+      action="/sent"
     >
       <p>Please fill out this form to submit a resource for inclusion on trumpsupportersarent.com, or just to get in touch.</p>
       <input type="text" name="name" placeholder="Name" />

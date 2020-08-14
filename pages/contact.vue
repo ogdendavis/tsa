@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Trump supporters aren't...</h1>
+    <h1><nuxt-link class="headingLink" to="/?i=1">Trump supporters aren't...</nuxt-link></h1>
     <form
       name="contact"
       method="POST"
@@ -28,6 +28,10 @@
   h1 {
     text-align: center;
     margin-bottom: 3rem;
+  }
+  .headingLink {
+    color: #fff;
+    text-decoration: none;
   }
 
   form {

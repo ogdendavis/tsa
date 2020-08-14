@@ -230,8 +230,16 @@ export const mutations = {
     state.index = state.index >= maxIndex ? 0 : state.index + 1;
   },
   setTruth(state) {
+    // Make a copy of the active truth, so we can do some modifications without losing the original data
+    const displayContent = JSON.parse(JSON.stringify(state.truths[state.index]));
+    // Shuffle the order of the articles
+    shuffle(displayContent.cards);
+    // If there are more than 9 articles, cut some off!
+    if (displayContent.cards.length > 9) {
+      displayContent.cards = displayContent.cards.slice(0,9);
+    }
     // Set the new truth to display using the indicated index in state
-    state.displayContent = state.truths[state.index];
+    state.displayContent = displayContent;
   },
   shuffleTruths(state) {
     // Randomly reorder truths and put them in state

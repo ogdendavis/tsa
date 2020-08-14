@@ -65,11 +65,43 @@ export default {
   */
   router: {
     extendRoutes(routes, resolve) {
-      routes.push({
-        name: '404',
-        path: '*',
-        component: resolve(__dirname, 'pages/404.vue'),
-      });
+      routes.push(
+        {
+          name: 'noSuchRoute',
+          path: '*',
+          component: resolve(__dirname, 'pages/404.vue'),
+        },
+        {
+          name: 'racist',
+          path: '/racist',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'homophobic',
+          path: '/homophobic',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'liar',
+          path: '/liars',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'misogynist',
+          path: '/misogynist',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'ableist',
+          path: '/ableist',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+        {
+          name: 'fascist',
+          path: '/fascist',
+          component: resolve(__dirname, 'pages/index.vue'),
+        },
+      );
     },
   },
 }

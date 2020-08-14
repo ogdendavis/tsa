@@ -33,7 +33,7 @@
     },
     mounted() {
       // If coming from internal nav, immediately load content
-      if (this.$route.query.i) {
+      if (this.$route.query.i || this.$route.name !== 'index') {
         this.start();
       }
     },
@@ -50,18 +50,26 @@
         // Fade out current content
         container.style.transition = 'opacity .5s ease';
         container.style.opacity = 0;
-        // Get new content and move back to top while faded out
-        setTimeout(() => {
-          this.getContent();
-          window.scrollTo(0,0);
-        }, 510);
-        // Fade back in!
-        setTimeout(() => {
-          document.querySelector('.container').style.opacity = 1;
-        }, 750);
-        setTimeout(() => {
-          document.querySelector('.container').style.transition = '';
-        }, 1250)
+        // If we're on a topic-specific route, redirect to the main route. If not, just do the normal thing!
+        if (this.$route.name !== 'index') {
+          setTimeout(() => {
+            this.$router.push( {path:'/', query: {i: 1}} );
+          }, 510);
+        }
+        else {
+          // Get new content and move back to top while faded out
+          setTimeout(() => {
+            this.getContent();
+            window.scrollTo(0,0);
+          }, 510);
+          // Fade back in!
+          setTimeout(() => {
+            document.querySelector('.container').style.opacity = 1;
+          }, 750);
+          setTimeout(() => {
+            document.querySelector('.container').style.transition = '';
+          }, 1250);
+        }
       },
       handleScroll() {
         // This and following "handle" functions exist because Vue doesn't want you to attach multiple listeners to an element with the same callback.
@@ -84,7 +92,14 @@
         document.querySelector('.startListener').remove();
       },
       getContent() {
-        this.$store.dispatch('getNextTruth');
+        // Default behavior - get a random thing!
+        if (this.$route.name === 'index') {
+          this.$store.dispatch('getNextTruth');
+        }
+        // If URL indicates that a specific item should be displayed
+        else {
+          this.$store.dispatch('getSpecificTruth', this.$route.name);
+        }
         this.content = this.$store.state.displayContent;
       },
       startAnimation() {

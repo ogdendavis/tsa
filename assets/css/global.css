@@ -25,6 +25,8 @@ h1 {
 .container {
   box-sizing: border-box;
   padding: 1rem;
+  max-width: 80rem;
+  margin: auto;
 }
 
 .button {

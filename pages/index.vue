@@ -19,6 +19,37 @@
       Main,
       Footer,
     },
+    head() {
+      // Check once if we're at / or a topic-specific URL, since we'll use that to determine a lot of the metadata
+      const indexRoute = this.$route.name === 'index';
+      const title = 'Trump supporters aren\'t' + (indexRoute ? '...' : ` ${this.$route.name}`);
+      const ogURL = 'https://trumpsupportersarent.com/' + (indexRoute ? '' : this.$route.name);
+      return {
+        title,
+        meta: [
+          {
+            hid: 'og:url',
+            property: 'og:url',
+            content: ogURL
+          },
+          {
+            hid: 'og:title',
+            property: 'og:title',
+            content: title,
+          },
+          {
+            hid: 'og:desciption',
+            property: 'og:description',
+            content: `${title}, but they decided it isn't a deal breaker that Donald Trump is.`,
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://trumpsupportersarent.com/sassytrump.jpg',
+          }
+        ]
+      }
+    },
     data() {
       return {
         bannerClass: 'banner banner--init banner--withArrow',

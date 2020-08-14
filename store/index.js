@@ -215,6 +215,15 @@ export const state = () => ({
   displayContent: {},
 });
 
+// Helper function to randomize order of items in array.
+const shuffle = (ar) => {
+  for (let i = ar.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [ar[i], ar[j]] = [ar[j], ar[i]];
+  }
+  // Modifies array in place, so  no need for a return
+}
+
 export const mutations = {
   incrementTruth(state) {
     const maxIndex = state.truths.length - 1;
@@ -226,11 +235,7 @@ export const mutations = {
   },
   shuffleTruths(state) {
     // Randomly reorder truths and put them in state
-    const truths = state.truths;
-    for (let i = truths.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [truths[i], truths[j]] = [truths[j], truths[i]];
-    }
+    shuffle(state.truths);
   },
 }
 

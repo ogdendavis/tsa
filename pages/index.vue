@@ -30,8 +30,17 @@
         },
         bannerInit: false,
         displayMain: false,
-        shareURL: `https://www.facebook.com/sharer/sharer.php?u=https://trumpsupportersarent.com/${this.$route.name === 'index' ? '' : this.$route.name}`
       };
+    },
+    computed: {
+      shareURL() {
+        let base = 'https://www.facebook.com/sharer/sharer.php?u=https://trumpsupportersarent.com/'
+        // If we're loaded, add stuff!
+        if (this.content) {
+          base += `${this.content.arent}${this.content.noun ? 's' : ''}`
+        }
+        return base;
+      }
     },
     mounted() {
       // If coming from internal nav, immediately load content

@@ -98,7 +98,7 @@ export default {
         },
         {
           name: 'fascist',
-          path: '/fascist',
+          path: '/fascists',
           component: resolve(__dirname, 'pages/index.vue'),
         },
       );

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
+    <a v-if="displayMain" class="shareButton" :href="shareURL" target="_blank" rel="noopener noreferrer">Share</a>
     <Main :visible="displayMain" :content="content" />
     <Footer v-if="displayMain" w="80rem" />
     <button class="button" v-if="displayMain" @click="handleClick">Do it again!</button>
@@ -19,37 +20,6 @@
       Main,
       Footer,
     },
-    head() {
-      // Check once if we're at / or a topic-specific URL, since we'll use that to determine a lot of the metadata
-      const indexRoute = this.$route.name === 'index';
-      const title = 'Trump supporters aren\'t' + (indexRoute ? '...' : ` ${this.$route.name}`);
-      const ogURL = 'https://trumpsupportersarent.com/' + (indexRoute ? '' : this.$route.name);
-      return {
-        title,
-        meta: [
-          {
-            hid: 'og:url',
-            property: 'og:url',
-            content: ogURL
-          },
-          {
-            hid: 'og:title',
-            property: 'og:title',
-            content: title,
-          },
-          {
-            hid: 'og:desciption',
-            property: 'og:description',
-            content: `${title}, but they decided it isn't a deal breaker that Donald Trump is.`,
-          },
-          {
-            hid: 'og:image',
-            property: 'og:image',
-            content: 'https://trumpsupportersarent.com/sassytrump.jpg',
-          }
-        ]
-      }
-    },
     data() {
       return {
         bannerClass: 'banner banner--init banner--withArrow',
@@ -60,6 +30,7 @@
         },
         bannerInit: false,
         displayMain: false,
+        shareURL: `https://www.facebook.com/sharer/sharer.php?u=https://trumpsupportersarent.com/${this.$route.name === 'index' ? '' : this.$route.name}`
       };
     },
     mounted() {
@@ -149,7 +120,38 @@
           this.bannerClass = 'banner banner--done';
         }, 1600);
       },
-    }
+    },
+    head() {
+      // Check once if we're at / or a topic-specific URL
+      const indexRoute = this.$route.name === 'index';
+      const title = 'Trump supporters aren\'t' + (indexRoute ? '...' : ` ${this.$route.name}`);
+      const ogURL = 'https://trumpsupportersarent.com/' + (indexRoute ? '' : this.$route.name);
+      return {
+        title,
+        meta: [
+          {
+            hid: 'og:url',
+            property: 'og:url',
+            content: ogURL
+          },
+          {
+            hid: 'og:title',
+            property: 'og:title',
+            content: title,
+          },
+          {
+            hid: 'og:desciption',
+            property: 'og:description',
+            content: `${title}, but they decided it isn't a deal breaker that Donald Trump is.`,
+          },
+          {
+            hid: 'og:image',
+            property: 'og:image',
+            content: 'https://trumpsupportersarent.com/sassytrump.jpg',
+          }
+        ]
+      }
+    },
   }
 </script>
 
@@ -182,6 +184,23 @@
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
     40% {transform: translateY(-30px);}
     60% {transform: translateY(-15px);}
+  }
+
+  .shareButton {
+    float: right;
+    clear: both;
+    color: #fff;
+    padding: 0.5rem;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  .shareButton::before {
+    content: url('~assets/icon-facebook-white.svg');
+    display: inline-block;
+    width: 1.5rem;
+    margin-right: 6px;
+    position: relative;
+    top: 1px;
   }
 
   button {

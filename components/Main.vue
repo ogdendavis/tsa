@@ -44,11 +44,11 @@
   main {
     background: #fff;
     color: var(--blue);
-    padding: 2rem;
+    padding: 2rem 2rem 4rem;
     box-sizing: border-box;
     transition: all 1s ease;
     max-width: 80rem;
-    margin: 2rem auto;
+    margin: 2.5rem auto 2rem;
   }
   main.hidden {
     display: none;

@@ -59,5 +59,17 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-  }
+  },
+  /*
+  ** Router extension
+  */
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: '404',
+        path: '*',
+        component: resolve(__dirname, 'pages/404.vue'),
+      });
+    },
+  },
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Banner :class="bannerClass" :arent="content['arent']" :noun="content['noun']" :init="bannerInit"/>
-    <a v-if="displayMain" class="shareButton" :href="shareURL" target="_blank" rel="noopener noreferrer">Share</a>
+    <ShareButton v-if="displayMain" :link="shareURL" />
     <Main :visible="displayMain" :content="content" />
     <Footer v-if="displayMain" w="80rem" />
     <button class="button" v-if="displayMain" @click="handleClick">Do it again!</button>
@@ -13,12 +13,14 @@
   import Banner from '~/components/Banner.vue';
   import Main from '~/components/Main.vue';
   import Footer from '~/components/Footer.vue';
+  import ShareButton from '~/components/ShareButton.vue';
 
   export default {
     components: {
       Banner,
       Main,
       Footer,
+      ShareButton,
     },
     data() {
       return {
@@ -34,7 +36,7 @@
     },
     computed: {
       shareURL() {
-        let base = 'https://www.facebook.com/sharer/sharer.php?u=https://trumpsupportersarent.com/'
+        let base = 'https://trumpsupportersarent.com/'
         // If we're loaded, add stuff!
         if (this.content) {
           base += `${this.content.arent}${this.content.noun ? 's' : ''}`
@@ -203,23 +205,6 @@
     0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
     40% {transform: translateY(-30px);}
     60% {transform: translateY(-15px);}
-  }
-
-  .shareButton {
-    float: right;
-    clear: both;
-    color: #fff;
-    padding: 0.5rem;
-    text-decoration: none;
-    font-size: 1.1rem;
-  }
-  .shareButton::before {
-    content: url('~assets/icon-facebook-white.svg');
-    display: inline-block;
-    width: 1.5rem;
-    margin-right: 6px;
-    position: relative;
-    top: 1px;
   }
 
   button {

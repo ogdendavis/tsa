@@ -7,11 +7,17 @@
       </div>
       <p>{{ item.blurb }}</p>
     </a>
+    <ShareButton class="articleShare" :link="item.link" />
   </article>
 </template>
 
 <script>
+  import ShareButton from '~/components/ShareButton.vue';
+
   export default {
+    components: {
+      ShareButton,
+    },
     props: {
       item: Object,
     }
@@ -25,6 +31,7 @@
     position: relative;
     box-shadow: 2px 3px 10px 5px #dcdcdc;
     margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
   }
   @media only screen and (max-width: 900px) {
     article {
@@ -60,5 +67,13 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 24px;
+  }
+
+  .articleShare {
+    background: var(--blue);
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 </style>

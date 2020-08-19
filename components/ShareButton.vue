@@ -22,12 +22,11 @@
     color: #fff;
     padding: 0.5rem;
     text-decoration: none;
-    font-size: 1.1rem;
   }
   a::before {
     content: url('~assets/icon-facebook-white.svg');
     display: inline-block;
-    width: 1.5rem;
+    width: 1rem;
     margin-right: 6px;
     position: relative;
     top: 1px;
